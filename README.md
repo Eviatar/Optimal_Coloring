@@ -5,7 +5,7 @@ This code was authored by Erdem Varol (Liam Paninski Lab) and Eviatar Yemini (Ol
 
 https://www.biorxiv.org/content/10.1101/676312v1.full
 
-The algorithmic code herein chooses near-optimal color barcodes for cell identification. The algorithm requires a list of reporters with cell-specific expression (e.g., from WormBase.org pr FlyBase.org), the number of colors available (e.g., 3 colors = RGB), a cell-adjacency matrix specifying which cells must be distinguishable from each other (e.g., neighboring cells), the margin for discriminating colors (e.g., 1 means we can only discriminate whether a color is present or absent whereas 1/3 permits discriminating bright, medium, weak, or no color expression), and a target for reporter sparsity (e.g., are we limited to ~3 transgenic reporters or can we use ~40 as was done in NeuroPAL). Each time the algorithm is run, it chooses a different near-optimal set of reporter-color assignments. These near-optimal solutions can then be applied in vivo to implement color barcodes for cell-specific identification.
+The algorithmic code herein chooses approximately optimal multicolor solutions for cell identification. Running the algorithm multiple times generates a variety of reporter-fluorophore combinations to test in vivo. The algorithm requires a list of reporters with cell-specific expression (e.g., from WormBase for worms, FlyBase for flies, ZFIN for zebrafish, or MGI for mice), the number of colors available (e.g., 3 colors = RGB), a cell-adjacency matrix specifying which cells must be distinguishable from each other (e.g., neighboring cells), the margin for discriminating colors (e.g., 1 means we can only discriminate whether a color is present or absent whereas 1/3 permits discriminating bright, medium, weak, or no color expression), and a target for reporter sparsity (e.g., are we limited to ~3 transgenic reporters or can we use ~40 as was done in NeuroPAL). Each time the algorithm is run, it chooses a different approximately optimal set of reporter-color assignments. These approximately optimal solutions can then be applied in vivo to implement color barcodes for cell-specific identification.
 
 ## Getting Started
 
@@ -27,13 +27,13 @@ No installation is necessary. Simply clone the repository to your computer.
 ### List of script files
 
 1. optimal_color_parameters.m = edit this file for your project
-2. find_optimal_colors.m = run this script to find near-optimal coloring solutions
+2. find_optimal_colors.m = run this script to find approximately optimal coloring solutions
 
 ### List of function files
-3. optimal_color_solver.m = converge on a near-optimal solution
+3. optimal_color_solver.m = converge on an approximately optimal solution
 4. getReporterInfo.m = get reporter info from the NeuroPAL or Brain Atlas tables
 5. computeProbAdjacency.m = compute a probabilistic adjacency matrix
-6. plotCells.m = plot the cell coloring (e.g., show a near-optimal worm solution)
+6. plotCells.m = plot the cell coloring (e.g., show an approximately optimal worm solution)
 
 ### List of data files
 7. data.mat = data for running NeuroPAL examples

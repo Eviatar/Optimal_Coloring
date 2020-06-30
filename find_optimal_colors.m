@@ -157,6 +157,7 @@ set(gca, 'Xtick',(1:length(cell_names)), 'XTickLabel', cell_names, ...
 subplot(1,num_plots,2);
 optimal_color_graph = squareform(pdist(optimal_colors));
 optimal_color_margin = sum(vec(max(color_margin*A-optimal_color_graph.*A,0)))./sum(vec(A));
+optimal_color_graph(optimal_color_graph >= color_margin) = 0;
 imagesc(optimal_color_graph.*A);
 colorbar;
 set(gca, 'Xtick', (1:length(cell_names)), 'XTickLabel', cell_names, ...
@@ -167,10 +168,12 @@ title(['Approximately optimal color margin violation: ' ...
 
 % NeuroPAL color margin violations.
 if is_NeuroPAL
-    np_color_margin = 1/3;
+    NP_color_margin = 1/3;
     subplot(1,num_plots,3);
-    neuropal_color_graph = squareform(pdist(NeuroPAL_colors));
-    neuropal_color_margin = sum(vec(max(np_color_margin*A-neuropal_color_graph.*A,0)))./sum(vec(A));
+    NeuroPAL_norm_colors = NeuroPAL_colors ./ sum(NeuroPAL_colors,2);
+    neuropal_color_graph = squareform(pdist(NeuroPAL_norm_colors));
+    neuropal_color_margin = sum(vec(max(NP_color_margin*A-neuropal_color_graph.*A,0)))./sum(vec(A));
+    neuropal_color_graph(neuropal_color_graph >= color_margin) = 0;
     imagesc(neuropal_color_graph.*A);
     colorbar;
     set(gca, 'Xtick', (1:length(cell_names)), 'XTickLabel', cell_names, ...
