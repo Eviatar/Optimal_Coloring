@@ -1,9 +1,9 @@
 # Optimal Coloring for Cell ID Barcodes (NeuroPAL)
 
 This code was authored by Erdem Varol (Liam Paninski Lab) and Eviatar Yemini (Oliver Hobert Lab) at Columbia University for the NeuroPAL publication,
-"NeuroPAL: A Neuronal Polychromatic Atlas of Landmarks for Whole-Brain Imaging in C. elegans". The preprint is available here:
+"NeuroPAL: A Multicolor Atlas for Whole-Brain Neuronal Identification in C. elegans". The publication is available here:
 
-https://www.biorxiv.org/content/10.1101/676312v1.full
+https://www.cell.com/cell/fulltext/S0092-8674(20)31682-2
 
 The algorithmic code herein chooses approximately optimal multicolor solutions for cell identification. Running the algorithm multiple times generates a variety of reporter-fluorophore combinations to test in vivo. The algorithm requires a list of reporters with cell-specific expression (e.g., from WormBase for worms, FlyBase for flies, ZFIN for zebrafish, or MGI for mice), the number of colors available (e.g., 3 colors = RGB), a cell-adjacency matrix specifying which cells must be distinguishable from each other (e.g., neighboring cells), the margin for discriminating colors (e.g., 1 means we can only discriminate whether a color is present or absent whereas 1/3 permits discriminating bright, medium, weak, or no color expression), and a target for reporter sparsity (e.g., are we limited to ~3 transgenic reporters or can we use ~40 as was done in NeuroPAL). Each time the algorithm is run, it chooses a different approximately optimal set of reporter-color assignments. These approximately optimal solutions can then be applied in vivo to implement color barcodes for cell-specific identification.
 
